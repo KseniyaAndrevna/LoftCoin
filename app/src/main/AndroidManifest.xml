@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.kseniyaa.loftcoin">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".App"
@@ -9,7 +12,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".screens.launch.LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,7 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".screens.welcome.WelcomeActivity" />
-        <activity android:name=".screens.start.StartActivity"></activity>
+        <activity android:name=".screens.start.StartActivity" />
+        <activity android:name=".screens.main.MainActivity"></activity>
     </application>
 
 </manifest>

@@ -11,9 +11,7 @@
         android:layout_width="@dimen/start_img_top_size"
         android:layout_height="@dimen/start_img_top_size"
         android:src="@drawable/img_start_top"
-        android:translationX="@dimen/start_img_top_transX"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:translationX="@dimen/start_img_top_transX" />
 
     <ImageView
         android:id="@+id/img_start_center"
