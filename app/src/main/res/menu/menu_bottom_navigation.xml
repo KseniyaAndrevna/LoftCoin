@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_item_wallets"
+        android:title="@string/bottom_navigation_menu_wallets"
+        android:icon="@drawable/ic_menu_wallets"
+        />
+
+    <item
+        android:id="@+id/menu_item_rate"
+        android:title="@string/bottom_navigation_menu_rate"
+        android:icon="@drawable/ic_menu_rate"
+        />
+
+    <item
+        android:id="@+id/menu_item_converter"
+        android:title="@string/bottom_navigation_menu_converter"
+        android:icon="@drawable/ic_menu_converter"
+        />
+</menu>

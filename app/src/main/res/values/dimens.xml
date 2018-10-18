@@ -37,4 +37,25 @@
     <dimen name="welcome_btn_height">55dp</dimen>
     <dimen name="welcome_btn_min_width">200dp</dimen>
 
+    <!-- MainActivity -->
+    <dimen name="frame_height">0dp</dimen>
+
+    <!-- ItemRate -->
+    <dimen name="bg_coin_size">20dp</dimen>
+    <dimen name="frame_width_height">24dp</dimen>
+    <dimen name="currency_name_text_size">@dimen/small_text_size</dimen>
+    <dimen name="price_text_size">@dimen/small_text_size</dimen>
+    <dimen name="currency_name_margin">@dimen/middle_text_margin</dimen>
+    <dimen name="item_layout_paddingS">24dp</dimen>
+    <dimen name="item_layout_paddingE">@dimen/middle_text_margin</dimen>
+    <dimen name="item_layout_height">64dp</dimen>
+    <dimen name="item_prise_margin">14dp</dimen>
+    <dimen name="item_percent_margin">4dp</dimen>
+
+
+
+
+
+
+
 </resources>

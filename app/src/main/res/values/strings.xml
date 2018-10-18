@@ -10,7 +10,18 @@
     <string name="welcome_subtitle_3">Узнай, сколько эфира в 1.23 биткоина</string>
 
     <!--StartActivity-->
-    <string name="start_app_name">LoftCoin</string>
+    <string name="start_app_name" translatable="false">LoftCoin</string>
     <string name="welcome_start_btn">Начать работу</string>
+
+    <!--BottomNavigationMenu-->
+    <string name="bottom_navigation_menu_wallets">Кошельки</string>
+    <string name="bottom_navigation_menu_rate">Курс</string>
+    <string name="bottom_navigation_menu_converter">Конвертер</string>
+
+    <!--RateFragment-->
+    <string name="rate_fragment_title">Курс криптовалют</string>
+    <string name="rate_item_percent_change" translatable="false">%.2f%%</string>
+    <string name="currency_amount" translatable="false">%s %s</string>
+
 
 </resources>

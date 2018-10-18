@@ -24,6 +24,9 @@
     <color name="grey_60">#2e2f47</color>
     <color name="grey_80">#191a2a</color>
     <color name="grey_100">#10101a</color>
+    <color name="black">#000000</color>
+    <color name="dark_two">#212237</color>
+    <color name="dark_three">#19192a</color>
 
     <!-- WelcomeFragment -->
     <color name="welcome_fragment_title_color">@color/white</color>
@@ -31,6 +34,26 @@
 
     <!-- StartActivity -->
     <color name="start_text_color">@color/white</color>
+
+    <!-- MainActivity -->
+    <color name="bottom_navigation_back">#101019</color>
+    <color name="bottom_navigation_icon_chek">@color/white</color>
+    <color name="bottom_navigation_icon_unchek">@color/grey_20</color>
+    <color name="bottom_navigation_text_chek">@color/white</color>
+    <color name="bottom_navigation_text_unchek">@color/grey_20</color>
+
+    <!-- Fragments -->
+    <color name="fragment_rate_back">@color/color_primary</color>
+
+    <!-- ItemRate -->
+    <color name="percent_down">@color/watermelon</color>
+    <color name="percent_up">@color/green</color>
+    <color name="coin_symbol">@color/black</color>
+    <color name="text_symbol">@color/white</color>
+    <color name="coin_symbol_bg">@color/white</color>
+    <color name="item_bg_event">@color/dark_two</color>
+    <color name="item_bg_odd">@color/dark_three</color>
+
 
 </resources>
 

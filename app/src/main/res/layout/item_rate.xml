@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/item_layout_height"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/item_layout_paddingS"
+    android:paddingEnd="@dimen/item_layout_paddingE">
+
+    <include
+        android:id="@+id/currency"
+        layout="@layout/currency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/item_prise_margin"
+        android:gravity="end"
+        android:textColor="@color/white"
+        android:textSize="@dimen/price_text_size"
+        android:textStyle="bold"
+        tools:text="$45 800 0" />
+
+    <TextView
+        android:id="@+id/percent_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/price"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/item_percent_margin"
+        android:textColor="@color/percent_down"
+        tools:text="-14%" />
+
+</RelativeLayout>
