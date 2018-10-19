@@ -1,7 +1,6 @@
-package com.kseniyaa.loftcoin.screens.start;
+package com.kseniyaa.loftcoin.screens.main.rate;
 
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.kseniyaa.loftcoin.data.api.Api;
 import com.kseniyaa.loftcoin.data.api.model.RateResponse;
@@ -11,23 +10,22 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class StartPresenterImpl implements StartPresenter {
 
-    private static final String TAG = "StartPresenterImpl";
+public class RatePresenterImpl implements RatePresenter {
 
     private Api api;
     private Prefs prefs;
 
     @Nullable
-    private StartView view;
+    private RateView view;
 
-    StartPresenterImpl(Api api, Prefs prefs) {
+    RatePresenterImpl(Api api, Prefs prefs) {
         this.api = api;
         this.prefs = prefs;
     }
 
     @Override
-    public void attachView(StartView view) {
+    public void attachView(RateView view) {
         this.view = view;
     }
 
@@ -37,20 +35,28 @@ public class StartPresenterImpl implements StartPresenter {
     }
 
     @Override
-    public void loadRate() {
-
+    public void getRate() {
         api.ticker(prefs.getFiatCurrency().name(), "array").enqueue(new Callback<RateResponse>() {
             @Override
             public void onResponse(Call<RateResponse> call, Response<RateResponse> response) {
-                if (view != null) {
-                    view.navigateToMainScreen();
+                if (view != null && response.body() != null) {
+                    view.setCoins(response.body().data);
+                    view.setRefreshing(false);
                 }
             }
 
             @Override
             public void onFailure(Call<RateResponse> call, Throwable t) {
-                Log.e(TAG,"loadrate error", t);
+                if (view != null) {
+                    view.setRefreshing(false);
+                }
             }
         });
+    }
+
+    @Override
+    public void onRefresh() {
+        getRate();
+
     }
 }

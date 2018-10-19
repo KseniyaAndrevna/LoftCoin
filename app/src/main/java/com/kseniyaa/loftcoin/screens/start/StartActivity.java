@@ -83,6 +83,7 @@ public class StartActivity extends AppCompatActivity implements StartView {
 
     @Override
     public void navigateToMainScreen() {
+        System.out.println("start");
         MainActivity.startInNewTask(this);
     }
 }
