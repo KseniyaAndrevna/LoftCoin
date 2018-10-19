@@ -1,12 +1,12 @@
 package com.kseniyaa.loftcoin.screens.main.rate;
 
-import com.kseniyaa.loftcoin.data.api.model.Coin;
+import com.kseniyaa.loftcoin.data.db.model.CoinEntyti;
 
 import java.util.List;
 
 public interface RateView {
 
-    void setCoins(List<Coin> coins);
+    void setCoins(List<CoinEntyti> coins);
 
     void setRefreshing (Boolean refreshing);
 

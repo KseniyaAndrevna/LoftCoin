@@ -4,13 +4,16 @@ import android.app.Application;
 
 import com.kseniyaa.loftcoin.data.api.Api;
 import com.kseniyaa.loftcoin.data.api.ApiInitialaizer;
+import com.kseniyaa.loftcoin.data.db.Database;
+import com.kseniyaa.loftcoin.data.db.DatabaseInitialaizer;
 import com.kseniyaa.loftcoin.data.prefs.Prefs;
 import com.kseniyaa.loftcoin.data.prefs.PrefsImpl;
 
 public class App extends Application {
 
     private Prefs prefs;
-    public Api api;
+    private Api api;
+    private Database database;
 
     @Override
     public void onCreate() {
@@ -18,6 +21,7 @@ public class App extends Application {
 
         prefs = new PrefsImpl(this);
         api = new ApiInitialaizer().init();
+        database = new DatabaseInitialaizer().inint(this);
     }
 
     public Prefs getPrefs() {
@@ -26,5 +30,9 @@ public class App extends Application {
 
     public Api getApi () {
         return api;
+    }
+
+    public Database getDatabase () {
+        return database;
     }
 }

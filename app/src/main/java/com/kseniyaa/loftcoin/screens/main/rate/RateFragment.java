@@ -17,13 +17,16 @@ import android.view.ViewGroup;
 import com.kseniyaa.loftcoin.App;
 import com.kseniyaa.loftcoin.R;
 import com.kseniyaa.loftcoin.data.api.Api;
-import com.kseniyaa.loftcoin.data.api.model.Coin;
+import com.kseniyaa.loftcoin.data.db.Database;
+import com.kseniyaa.loftcoin.data.db.model.CoinEntityMapper;
+import com.kseniyaa.loftcoin.data.db.model.CoinEntyti;
 import com.kseniyaa.loftcoin.data.prefs.Prefs;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 public class RateFragment extends Fragment implements RateView {
 
@@ -41,6 +44,7 @@ public class RateFragment extends Fragment implements RateView {
 
     private RatePresenter presenter;
     private RateAdapter adapter;
+    Unbinder unbinder;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,7 +58,10 @@ public class RateFragment extends Fragment implements RateView {
 
         Api api = ((App) getActivity().getApplication()).getApi();
         Prefs prefs = ((App) getActivity().getApplication()).getPrefs();
-        presenter = new RatePresenterImpl(api, prefs);
+        Database database = ((App) getActivity().getApplication()).getDatabase();
+        CoinEntityMapper mapper = new CoinEntityMapper();
+
+        presenter = new RatePresenterImpl(api, prefs, database, mapper);
 
         adapter = new RateAdapter(prefs);
         adapter.setHasStableIds(true);
@@ -68,7 +75,7 @@ public class RateFragment extends Fragment implements RateView {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
 
         toolbar.setTitle(R.string.rate_fragment_title);
 
@@ -86,12 +93,15 @@ public class RateFragment extends Fragment implements RateView {
 
     @Override
     public void onDestroy() {
+        if (unbinder != null) {
+            unbinder.unbind();
+        }
         presenter.detachView();
         super.onDestroy();
     }
 
     @Override
-    public void setCoins(List<Coin> coins) {
+    public void setCoins(List<CoinEntyti> coins) {
         adapter.setCoins(coins);
     }
 
