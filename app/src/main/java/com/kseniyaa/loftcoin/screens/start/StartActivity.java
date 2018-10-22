@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import com.kseniyaa.loftcoin.App;
 import com.kseniyaa.loftcoin.R;
 import com.kseniyaa.loftcoin.data.api.Api;
+import com.kseniyaa.loftcoin.data.db.Database;
+import com.kseniyaa.loftcoin.data.db.model.CoinEntityMapper;
 import com.kseniyaa.loftcoin.data.prefs.Prefs;
 import com.kseniyaa.loftcoin.screens.main.MainActivity;
 
@@ -44,8 +46,10 @@ public class StartActivity extends AppCompatActivity implements StartView {
         ButterKnife.bind(this);
         Api api = ((App) getApplication()).getApi();
         Prefs prefs = ((App) getApplication()).getPrefs();
+        Database database = ((App) getApplication()).getDatabase();
+        CoinEntityMapper mapper = new CoinEntityMapper();
 
-        presenter = new StartPresenterImpl(api, prefs);
+        presenter = new StartPresenterImpl(api, prefs, database, mapper);
         presenter.attachView(this);
         presenter.loadRate();
     }
@@ -58,7 +62,7 @@ public class StartActivity extends AppCompatActivity implements StartView {
 
     private void startAnimations() {
 
-        ObjectAnimator innerAnimator = ObjectAnimator.ofFloat(startTop, "rotation",0, 360);
+        ObjectAnimator innerAnimator = ObjectAnimator.ofFloat(startTop, "rotation", 0, 360);
         innerAnimator.setDuration(30000);
         innerAnimator.setRepeatMode(ValueAnimator.RESTART);
         innerAnimator.setRepeatCount(ValueAnimator.INFINITE);
@@ -83,7 +87,6 @@ public class StartActivity extends AppCompatActivity implements StartView {
 
     @Override
     public void navigateToMainScreen() {
-        System.out.println("start");
         MainActivity.startInNewTask(this);
     }
 }

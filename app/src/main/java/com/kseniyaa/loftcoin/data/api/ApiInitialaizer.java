@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiInitialaizer {
 
-    public static final String BASE_URL = "https://api.coinmarketcap.com/v2/";
+    private static final String BASE_URL = "https://api.coinmarketcap.com/v2/";
 
     public Api init() {
         Gson gson = createGson();

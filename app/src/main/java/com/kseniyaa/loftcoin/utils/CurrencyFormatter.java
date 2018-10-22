@@ -7,7 +7,7 @@ public class CurrencyFormatter {
 
     private static final String CRYPTO_PATTERN = "0.0000####";
     private static final String CONVERT_PATTERN = "0.########";
-    private static final String FIAT_PATTERN = "###,##0.00##";
+    private static final String FIAT_PATTERN = "###,##0.00";
 
     private DecimalFormat decimalFormat;
 

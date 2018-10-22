@@ -6,11 +6,11 @@ import com.kseniyaa.loftcoin.R;
 
 public enum Currency {
 
-    BTC(R.drawable.ic_currency_bt),
+    BTC(R.drawable.ic_currency_btc),
     DOGE(R.drawable.ic_currency_doge),
-    ETH(R.drawable.ic_currency_et),
-    XMR(R.drawable.ic_currency_xm),
-    XRP(R.drawable.ic_currency_xr),
+    ETH(R.drawable.ic_currency_eth),
+    XMR(R.drawable.ic_currency_xmr),
+    XRP(R.drawable.ic_currency_xrp),
     DASH(R.drawable.ic_currency_dash);
 
     public int iconRes;

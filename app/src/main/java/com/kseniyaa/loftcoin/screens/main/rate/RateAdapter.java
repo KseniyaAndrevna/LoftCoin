@@ -13,8 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kseniyaa.loftcoin.R;
-import com.kseniyaa.loftcoin.data.api.model.Coin;
-import com.kseniyaa.loftcoin.data.api.model.Quote;
+import com.kseniyaa.loftcoin.data.db.model.CoinEntyti;
+import com.kseniyaa.loftcoin.data.db.model.QuoteEntity;
 import com.kseniyaa.loftcoin.data.model.Currency;
 import com.kseniyaa.loftcoin.data.model.Fiat;
 import com.kseniyaa.loftcoin.data.prefs.Prefs;
@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
 
 public class RateAdapter extends RecyclerView.Adapter<RateAdapter.RateViewHolder> {
 
-    private List<Coin> coins = Collections.emptyList();
+    private List<CoinEntyti> coins = Collections.emptyList();
 
     private Prefs prefs;
 
@@ -37,7 +37,7 @@ public class RateAdapter extends RecyclerView.Adapter<RateAdapter.RateViewHolder
         this.prefs = prefs;
     }
 
-    public void setCoins(List<Coin> coins) {
+    public void setCoins(List<CoinEntyti> coins) {
         this.coins = coins;
         notifyDataSetChanged();
     }
@@ -105,7 +105,7 @@ public class RateAdapter extends RecyclerView.Adapter<RateAdapter.RateViewHolder
             ButterKnife.bind(this, itemView);
         }
 
-        void bind(Coin coin, int position) {
+        void bind(CoinEntyti coin, int position) {
             bindIcon(coin);
             bindSymbol(coin);
             bindPrice(coin);
@@ -113,7 +113,7 @@ public class RateAdapter extends RecyclerView.Adapter<RateAdapter.RateViewHolder
             bindPercentChange(coin);
         }
 
-        private void bindIcon(Coin coin) {
+        private void bindIcon(CoinEntyti coin) {
             Currency currency = Currency.getCurrency(coin.symbol);
             if (currency != null) {
                 symbolIcon.setVisibility(View.VISIBLE);
@@ -127,13 +127,13 @@ public class RateAdapter extends RecyclerView.Adapter<RateAdapter.RateViewHolder
 
         }
 
-        private void bindSymbol(Coin coin) {
+        private void bindSymbol(CoinEntyti coin) {
             name.setText(coin.symbol);
         }
 
-        private void bindPrice(Coin coin) {
+        private void bindPrice(CoinEntyti coin) {
             Fiat fiat = prefs.getFiatCurrency();
-            Quote quote = coin.quotes.get(fiat.name());
+            QuoteEntity quote = coin.getQuote(fiat);
             String value = currencyFormatter.format(quote.price, false);
 
             price.setText(context.getString(R.string.currency_amount, value, fiat.symbol));
@@ -147,8 +147,8 @@ public class RateAdapter extends RecyclerView.Adapter<RateAdapter.RateViewHolder
             }
         }
 
-        private void bindPercentChange(Coin coin) {
-            Quote quote = coin.quotes.get(prefs.getFiatCurrency().name());
+        private void bindPercentChange(CoinEntyti coin) {
+            QuoteEntity quote = coin.getQuote(prefs.getFiatCurrency());
             float percentChangeValue = quote.percentChange24h;
 
             changePercent.setText(context.getString(R.string.rate_item_percent_change, percentChangeValue));
