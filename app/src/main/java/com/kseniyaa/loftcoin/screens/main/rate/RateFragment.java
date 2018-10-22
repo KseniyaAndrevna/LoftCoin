@@ -3,6 +3,7 @@ package com.kseniyaa.loftcoin.screens.main.rate;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -23,12 +24,15 @@ import com.kseniyaa.loftcoin.data.db.model.CoinEntyti;
 import com.kseniyaa.loftcoin.data.prefs.Prefs;
 
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class RateFragment extends Fragment implements RateView {
+
+    private static final String LAYOUT_MANAGER_STATE = "layout_manager_state";
 
     @BindView(R.id.rate_toolbar)
     Toolbar toolbar;
@@ -45,6 +49,7 @@ public class RateFragment extends Fragment implements RateView {
     private RatePresenter presenter;
     private RateAdapter adapter;
     Unbinder unbinder;
+    private Parcelable layoutManagerState;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -87,6 +92,10 @@ public class RateFragment extends Fragment implements RateView {
                 presenter.onRefresh()
         );
 
+        if (savedInstanceState != null) {
+            layoutManagerState = savedInstanceState.getParcelable(LAYOUT_MANAGER_STATE);
+        }
+
         presenter.attachView(this);
         presenter.getRate();
     }
@@ -101,8 +110,19 @@ public class RateFragment extends Fragment implements RateView {
     }
 
     @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putParcelable(LAYOUT_MANAGER_STATE, Objects.requireNonNull(recycler.getLayoutManager()).onSaveInstanceState());
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     public void setCoins(List<CoinEntyti> coins) {
         adapter.setCoins(coins);
+
+        if (layoutManagerState != null) {
+            Objects.requireNonNull(recycler.getLayoutManager()).onRestoreInstanceState(layoutManagerState);
+            layoutManagerState = null;
+        }
     }
 
     @Override

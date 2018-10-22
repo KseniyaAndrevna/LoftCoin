@@ -34,6 +34,8 @@ android {
         retrofit_version = "2.4.0"
         okhttp_version = "3.11.0"
         room_version = "1.1.1"
+        rx_version = "2.2.2"
+        rxA_version = "2.1.0"
     }
 
     dependencies {
@@ -57,6 +59,7 @@ android {
         //Retrofit
         implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
         implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+        implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
 
         //OkHttp
         implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
@@ -66,6 +69,10 @@ android {
         implementation "android.arch.persistence.room:runtime:$room_version"
         annotationProcessor "android.arch.persistence.room:compiler:$room_version"
         implementation "android.arch.persistence.room:rxjava2:$room_version"
+
+        //RX
+        implementation "io.reactivex.rxjava2:rxjava:$rx_version"
+        implementation "io.reactivex.rxjava2:rxandroid:$rxA_version"
 
         //Tests
         testImplementation 'junit:junit:4.12'

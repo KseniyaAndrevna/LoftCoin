@@ -21,7 +21,7 @@ public class App extends Application {
 
         prefs = new PrefsImpl(this);
         api = new ApiInitialaizer().init();
-        database = new DatabaseInitialaizer().inint(this);
+        database = new DatabaseInitialaizer().init(this);
     }
 
     public Prefs getPrefs() {
