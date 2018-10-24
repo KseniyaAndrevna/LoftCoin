@@ -5,13 +5,13 @@
     <dimen name="middle_text_size">24sp</dimen>
     <dimen name="small_text_size">16sp</dimen>
 
-    <dimen name="large_text_margin">32dp</dimen>
-    <dimen name="middle_text_margin">16dp</dimen>
-    <dimen name="small_text_margin">8dp</dimen>
+    <dimen name="large_margin">32dp</dimen>
+    <dimen name="middle_margin">16dp</dimen>
+    <dimen name="small_margin">8dp</dimen>
 
     <!-- StartActivity -->
     <dimen name="start_text_size">@dimen/large_text_size</dimen>
-    <dimen name="start_text_margin">@dimen/small_text_margin</dimen>
+    <dimen name="start_text_margin">@dimen/small_margin</dimen>
     <dimen name="start_img_top_size">250dp</dimen>
     <dimen name="start_img_top_transX">-120dp</dimen>
     <dimen name="start_img_center_size">160dp</dimen>
@@ -23,14 +23,14 @@
     <!-- WelcomeFragment -->
     <dimen name="welcome_fragment_title_size">@dimen/middle_text_size</dimen>
     <dimen name="welcome_fragment_subtitle_size">@dimen/small_text_size</dimen>
-    <dimen name="welcome_fragment_title_margin">@dimen/large_text_margin</dimen>
-    <dimen name="welcome_fragment_subtitle_marginT">@dimen/middle_text_margin</dimen>
-    <dimen name="welcome_fragment_subtitle_margin">@dimen/large_text_margin</dimen>
+    <dimen name="welcome_fragment_title_margin">@dimen/large_margin</dimen>
+    <dimen name="welcome_fragment_subtitle_marginT">@dimen/middle_margin</dimen>
+    <dimen name="welcome_fragment_subtitle_margin">@dimen/large_margin</dimen>
     <dimen name="welcome_fragment_icon_size">168dp</dimen>
     <dimen name="welcome_fragment_icon_biasV">0.2</dimen>
 
     <!-- WelcomeActivity -->
-    <dimen name="welcome_margin">@dimen/large_text_margin</dimen>
+    <dimen name="welcome_margin">@dimen/large_margin</dimen>
     <dimen name="welcome_marginB">64dp</dimen>
     <dimen name="welcome_indicator_padding">16dp</dimen>
     <dimen name="welcome_indicator_radius">6dp</dimen>
@@ -45,16 +45,42 @@
     <dimen name="frame_width_height">24dp</dimen>
     <dimen name="currency_name_text_size">@dimen/small_text_size</dimen>
     <dimen name="price_text_size">@dimen/small_text_size</dimen>
-    <dimen name="currency_name_margin">@dimen/middle_text_margin</dimen>
+    <dimen name="currency_name_margin">@dimen/middle_margin</dimen>
     <dimen name="item_layout_paddingS">24dp</dimen>
-    <dimen name="item_layout_paddingE">@dimen/middle_text_margin</dimen>
+    <dimen name="item_layout_paddingE">@dimen/middle_margin</dimen>
     <dimen name="item_layout_height">64dp</dimen>
     <dimen name="item_prise_margin">14dp</dimen>
     <dimen name="item_percent_margin">4dp</dimen>
 
+    <!-- ItemCurrency -->
+    <dimen name="item_curr_layout_padding">24dp</dimen>
+    <dimen name="item_curr_layout_height">56dp</dimen>
+    <dimen name="item_curr_item_f_layout_hw">20dp</dimen>
+    <dimen name="item_curr_bg_coin_size">14sp</dimen>
+    <dimen name="item_curr_item_margin">28dp</dimen>
 
+    <!-- CurrencyDialog -->
+    <dimen name="currency_paddingB">8dp</dimen>
+    <dimen name="currency_tv_padding">16dp</dimen>
+    <dimen name="currency_tv_choose_size">60dp</dimen>
+    <dimen name="currency_tv_choose_height_width">40dp</dimen>
+    <dimen name="currency_tv_coin_size">14sp</dimen>
+    <dimen name="currency_tv_coin_marginS">20dp</dimen>
+    <dimen name="bg_coin_transparent_size">40dp</dimen>
+    <dimen name="currency_l_l_height">56dp</dimen>
 
+    <!-- Converter -->
+    <dimen name="converter_bg_corner_radius">4dp</dimen>
+    <dimen name="converter_l_l_height">92dp</dimen>
+    <dimen name="converter_marginSE">@dimen/large_margin</dimen>
+    <dimen name="converter_marginT">@dimen/middle_margin</dimen>
+    <dimen name="converter_l_l_padding">20dp</dimen>
+    <dimen name="converter_text_size">@dimen/middle_text_size</dimen>
 
+    <!-- CurrencyBottomSheet -->
+    <dimen name="currency_b_sheet_tv_height">60dp</dimen>
+    <dimen name="currency_b_sheet_tv_padding">@dimen/middle_margin</dimen>
+    <dimen name="currency_b_sheet_tv_size">@dimen/small_text_size</dimen>
 
 
 

@@ -8,4 +8,60 @@
         <item name="android:windowBackground">@color/color_primary</item>
     </style>
 
+    <!-- DialogCurrencyStyles -->
+    <style name="LinearLayoutStyle">
+        <item name="android:layout_height">@dimen/currency_l_l_height</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingEnd">@dimen/currency_tv_padding</item>
+        <item name="android:paddingStart">@dimen/currency_tv_padding</item>
+    </style>
+
+    <style name="TvCoinStyle">
+        <item name="android:layout_height">@dimen/currency_tv_choose_height_width</item>
+        <item name="android:layout_width">@dimen/currency_tv_choose_height_width</item>
+        <item name="android:background">@drawable/bg_coin_symbol_transparent</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/currency_tv_coin_size</item>
+        <item name="android:textColor">@color/currency_coin_color</item>
+    </style>
+
+    <style name="TvCoinTitleStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginStart">@dimen/currency_tv_coin_marginS</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">@dimen/currency_tv_coin_size</item>
+        <item name="android:textColor">@color/currency_coin_color</item>
+    </style>
+
+    <!-- ConverterStyles -->
+    <style name="ConverterLayoutStyle">
+        <item name="android:layout_height">@dimen/converter_l_l_height</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginTop">@dimen/converter_marginT</item>
+        <item name="android:layout_marginStart">@dimen/converter_marginSE</item>
+        <item name="android:layout_marginEnd">@dimen/converter_marginSE</item>
+        <item name="android:paddingEnd">@dimen/converter_l_l_padding</item>
+        <item name="android:paddingStart">@dimen/converter_l_l_padding</item>
+    </style>
+
+    <style name="ConverterIncludeStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_weight">0</item>
+    </style>
+
+    <style name="ConverterETStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@null</item>
+        <item name="android:textSize">@dimen/converter_text_size</item>
+    </style>
+
+
 </resources>

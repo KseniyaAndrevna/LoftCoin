@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.kseniyaa.loftcoin.R;
+import com.kseniyaa.loftcoin.screens.main.converter.ConverterFragment;
 import com.kseniyaa.loftcoin.screens.main.rate.RateFragment;
 
 import butterknife.BindView;
@@ -45,12 +46,24 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_item_rate:
                 showRateFragment();
                 break;
+
+            case R.id.menu_item_converter:
+                showConverterFragment();
+                break;
         }
         return true;
     };
 
     private void showRateFragment() {
         RateFragment fragment = new RateFragment();
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.commit();
+    }
+
+    private void showConverterFragment() {
+        ConverterFragment fragment = new ConverterFragment();
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".screens.main.converter.ConverterFragment">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/converter_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/converter_bg" />
+
+    <LinearLayout
+        style="@style/ConverterLayoutStyle"
+        android:background="@drawable/bg_converter">
+
+        <EditText
+            android:id="@+id/source_amount"
+            style="@style/ConverterETStyle"
+            android:inputType="numberDecimal"
+            android:maxLength="16" />
+
+        <include
+            android:id="@+id/source_currency"
+            style="@style/ConverterIncludeStyle"
+            layout="@layout/currency" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ConverterLayoutStyle">
+
+        <TextView
+            android:id="@+id/destination_amount"
+            style="@style/ConverterETStyle"
+            android:gravity="start"
+            android:singleLine="true" />
+
+        <include
+            android:id="@+id/destination_currency"
+            style="@style/ConverterIncludeStyle"
+            layout="@layout/currency" />
+
+    </LinearLayout>
+
+</LinearLayout>

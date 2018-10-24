@@ -23,5 +23,22 @@
     <string name="rate_item_percent_change" translatable="false">%.2f%%</string>
     <string name="currency_amount" translatable="false">%s %s</string>
 
+    <!--ConverterFragment-->
+    <string name="converter_fragment_title">Конвертер</string>
+
+    <!-- CurrencyDialog -->
+    <string name="currency_item_menu">Валюта</string>
+    <string name="currency_choose_title">Выбор валюты</string>
+    <string name="currency_usd" translatable="false">$</string>
+    <string name="currency_usd_title" translatable="false">Dollar | USD</string>
+    <string name="currency_eur" translatable="false">€</string>
+    <string name="currency_eur_title" translatable="false">Euro | EUR</string>
+    <string name="currency_rub" translatable="false">₽</string>
+    <string name="currency_rub_title" translatable="false">Rouble | RUB</string>
+
+    <!-- CurrencyBottomSheet -->
+    <string name="currency_b_sheet_tv">Выбор вылюты</string>
+    <string name="currency_b_sheet_curr_name"  translatable="false">%s | %s</string>
+
 
 </resources>

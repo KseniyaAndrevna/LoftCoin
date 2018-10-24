@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/dialog_currency_bg"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/currency_paddingB">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/currency_tv_choose_size"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/currency_tv_padding"
+        android:paddingEnd="@dimen/currency_tv_padding"
+        android:text="@string/currency_choose_title" />
+
+    <LinearLayout
+        android:id="@+id/usd"
+        style="@style/LinearLayoutStyle" >
+
+        <TextView
+            style="@style/TvCoinStyle"
+            android:text="@string/currency_usd" />
+
+        <TextView
+            style="@style/TvCoinTitleStyle"
+            android:text="@string/currency_usd_title" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/eur"
+        style="@style/LinearLayoutStyle">
+
+        <TextView
+            style="@style/TvCoinStyle"
+            android:text="@string/currency_eur" />
+
+        <TextView
+            style="@style/TvCoinTitleStyle"
+            android:text="@string/currency_eur_title" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rub"
+        style="@style/LinearLayoutStyle" >
+
+        <TextView
+            style="@style/TvCoinStyle"
+            android:text="@string/currency_rub" />
+
+        <TextView
+            style="@style/TvCoinTitleStyle"
+            android:text="@string/currency_rub_title" />
+
+    </LinearLayout>
+
+</LinearLayout>

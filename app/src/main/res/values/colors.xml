@@ -25,6 +25,7 @@
     <color name="grey_80">#191a2a</color>
     <color name="grey_100">#10101a</color>
     <color name="black">#000000</color>
+    <color name="black_transparent">#2B000000</color>
     <color name="dark_two">#212237</color>
     <color name="dark_three">#19192a</color>
 
@@ -53,6 +54,24 @@
     <color name="coin_symbol_bg">@color/white</color>
     <color name="item_bg_event">@color/dark_two</color>
     <color name="item_bg_odd">@color/dark_three</color>
+
+    <!-- ItemCurrency -->
+    <color name="item_curr_layout_tv">@color/grey_50</color>
+    <color name="item_curr_layout_iv">@color/white</color>
+
+    <!-- CurrencyDialog -->
+    <color name="dialog_currency_bg">@color/grey_50</color>
+    <color name="currency_coin_bg">@color/black_transparent</color>
+    <color name="currency_coin_color">@color/white</color>
+
+    <!-- Converter -->
+    <color name="converter_bg_first_currency">@color/grey_60</color>
+    <color name="converter_bg">@color/color_primary</color>
+
+    <!-- CurrencyBottomSheet -->
+    <color name="currency_b_sheet_bg">@color/grey_50</color>
+    <color name="currency_tv">@color/white</color>
+
 
 
 </resources>

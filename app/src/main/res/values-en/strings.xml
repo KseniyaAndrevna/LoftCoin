@@ -20,4 +20,15 @@
     <!--RateFragment-->
     <string name="rate_fragment_title">Cryptocurrency rate</string>
 
+    <!--ConverterFragment-->
+    <string name="converter_fragment_title">Converter</string>
+
+    <!-- CurrencyDialog -->
+    <string name="currency_item_menu">Currency</string>
+    <string name="currency_choose_title">Currency choose</string>
+
+    <!-- CurrencyBottomSheet -->
+    <string name="currency_b_sheet_tv">Currency choose</string>
+
+
 </resources>
