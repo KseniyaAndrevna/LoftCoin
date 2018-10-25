@@ -9,12 +9,17 @@ import com.kseniyaa.loftcoin.data.db.model.CoinEntyti;
 
 import java.util.List;
 
+import io.reactivex.Flowable;
+
 @Dao
 public interface CoinDao {
 
-    @Insert (onConflict = OnConflictStrategy.REPLACE)
-    void saveCoins (List<CoinEntyti> coins);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void saveCoins(List<CoinEntyti> coins);
 
-    @Query("SELECT * FROM Coin" )
-    List<CoinEntyti> getCoins();
+    @Query("SELECT * FROM Coin")
+    Flowable<List<CoinEntyti>> getCoins();
+
+    @Query("SELECT * FROM Coin WHERE symbol = :symbol" )
+    CoinEntyti getCoin(String symbol);
 }

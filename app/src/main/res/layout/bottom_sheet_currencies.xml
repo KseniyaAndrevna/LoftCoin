@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/currency_b_sheet_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/currency_b_sheet_tv_height"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/currency_b_sheet_tv_padding"
+        android:paddingEnd="@dimen/currency_b_sheet_tv_padding"
+        android:text="@string/currency_b_sheet_tv"
+        android:textColor="@color/currency_tv"
+        android:textSize="@dimen/currency_b_sheet_tv_size" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

@@ -5,6 +5,8 @@ import com.kseniyaa.loftcoin.data.db.model.CoinEntyti;
 
 import java.util.List;
 
+import io.reactivex.Flowable;
+
 public class DatabaseImplRoom implements Database {
 
     private AppDatabase database;
@@ -19,7 +21,12 @@ public class DatabaseImplRoom implements Database {
     }
 
     @Override
-    public List<CoinEntyti> getCoins() {
+    public Flowable<List<CoinEntyti>> getCoins() {
         return database.coinDao().getCoins();
+    }
+
+    @Override
+    public CoinEntyti getCoin(String symbol) {
+        return database.coinDao().getCoin(symbol);
     }
 }

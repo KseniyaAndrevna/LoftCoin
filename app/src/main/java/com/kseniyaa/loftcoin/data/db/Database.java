@@ -4,9 +4,13 @@ import com.kseniyaa.loftcoin.data.db.model.CoinEntyti;
 
 import java.util.List;
 
+import io.reactivex.Flowable;
+
 public interface Database {
 
     void saveCoins (List<CoinEntyti> coins);
 
-    List<CoinEntyti> getCoins();
+    Flowable<List<CoinEntyti>> getCoins();
+
+    CoinEntyti getCoin(String symbol);
 }

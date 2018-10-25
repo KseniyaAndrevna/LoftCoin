@@ -4,17 +4,18 @@ import android.support.annotation.Nullable;
 
 import com.kseniyaa.loftcoin.data.api.Api;
 import com.kseniyaa.loftcoin.data.api.model.Coin;
-import com.kseniyaa.loftcoin.data.api.model.RateResponse;
 import com.kseniyaa.loftcoin.data.db.Database;
 import com.kseniyaa.loftcoin.data.db.model.CoinEntityMapper;
 import com.kseniyaa.loftcoin.data.db.model.CoinEntyti;
+import com.kseniyaa.loftcoin.data.model.Fiat;
 import com.kseniyaa.loftcoin.data.prefs.Prefs;
 
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 
 public class RatePresenterImpl implements RatePresenter {
@@ -23,6 +24,8 @@ public class RatePresenterImpl implements RatePresenter {
     private Prefs prefs;
     private Database database;
     private CoinEntityMapper mapper;
+    private CompositeDisposable disposables = new CompositeDisposable();
+
 
     @Nullable
     private RateView view;
@@ -41,48 +44,79 @@ public class RatePresenterImpl implements RatePresenter {
 
     @Override
     public void detachView() {
+        disposables.dispose();
         this.view = null;
     }
 
     @Override
     public void getRate() {
-        List<CoinEntyti> coins = database.getCoins();
-        if (view != null) {
-            view.setCoins(coins);
-        }
+
+        Disposable disposable = database.getCoins()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        coinEntities -> {
+                            if (view != null) {
+                                view.setCoins(coinEntities);
+                            }
+                        },
+                        throwable -> {
+                        }
+                );
+        disposables.add(disposable);
     }
 
-    private void loadRate() {
-        api.ticker(prefs.getFiatCurrency().name(), "array").enqueue(new Callback<RateResponse>() {
-            @Override
-            public void onResponse(Call<RateResponse> call, Response<RateResponse> response) {
-                if (response.body() != null) {
-                    List<Coin> coins = response.body().data;
-                    List<CoinEntyti> entytis = mapper.mapCoins(coins);
+    private void loadRate(Boolean fromRefresh) {
 
-                    database.saveCoins(entytis);
-
-                    if (view != null) {
-                        view.setCoins(entytis);
-                    }
-                }
-
-                if (view != null) {
-                    view.setRefreshing(false);
-                }
+        if (!fromRefresh) {
+            if (view != null) {
+                view.showProgress();
             }
+        }
 
-            @Override
-            public void onFailure(Call<RateResponse> call, Throwable t) {
-                if (view != null) {
-                    view.setRefreshing(false);
-                }
-            }
-        });
+        Disposable disposable = api.ticker(prefs.getFiatCurrency().name(), "array")
+                .subscribeOn(Schedulers.io())
+                .map(rateResponse -> {
+                    List<Coin> coins = rateResponse.data;
+                    List<CoinEntyti> coinEntities = mapper.mapCoins(coins);
+                    database.saveCoins(coinEntities);
+
+                    return new Object();
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        object -> {
+                            if (view != null) {
+                                if (fromRefresh) {
+                                    view.setRefreshing(false);
+                                } else {
+                                    view.hideProgress();
+                                }
+                            }
+
+                        }, throwable -> {
+                            if (fromRefresh) {
+                                view.setRefreshing(false);
+                            } else {
+                                view.hideProgress();
+                            }
+                        }
+                );
+        disposables.add(disposable);
     }
 
     @Override
     public void onRefresh() {
-        loadRate();
+        loadRate(true);
+    }
+
+    @Override
+    public void onMenuItemCurrencyClick() {
+        view.showCurrencyDialog();
+    }
+
+    @Override
+    public void onFiatCurrencySelected(Fiat currency) {
+        prefs.setFiatCurrency(currency);
+        loadRate(false);
     }
 }
