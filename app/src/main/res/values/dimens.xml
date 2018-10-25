@@ -77,10 +77,17 @@
     <dimen name="converter_l_l_padding">20dp</dimen>
     <dimen name="converter_text_size">@dimen/middle_text_size</dimen>
 
+    <!-- Wallets -->
+    <dimen name="item_wallet_width">240dp</dimen>
+    <dimen name="item_wallet_margin">20dp</dimen>
+
+
     <!-- CurrencyBottomSheet -->
     <dimen name="currency_b_sheet_tv_height">60dp</dimen>
     <dimen name="currency_b_sheet_tv_padding">@dimen/middle_margin</dimen>
     <dimen name="currency_b_sheet_tv_size">@dimen/small_text_size</dimen>
+
+
 
 
 

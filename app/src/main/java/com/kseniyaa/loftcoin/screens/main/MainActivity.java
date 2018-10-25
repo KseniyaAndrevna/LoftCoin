@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.kseniyaa.loftcoin.R;
 import com.kseniyaa.loftcoin.screens.main.converter.ConverterFragment;
 import com.kseniyaa.loftcoin.screens.main.rate.RateFragment;
+import com.kseniyaa.loftcoin.screens.main.wallets.WalletsFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener navigationListener = menuItem -> {
         switch (menuItem.getItemId()) {
+            case R.id.menu_item_wallets:
+                showWalletsFragment();
+                break;
+
             case R.id.menu_item_rate:
                 showRateFragment();
                 break;
@@ -53,6 +58,14 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     };
+
+        private void showWalletsFragment() {
+        WalletsFragment fragment = new WalletsFragment();
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.commit();
+    }
 
     private void showRateFragment() {
         RateFragment fragment = new RateFragment();

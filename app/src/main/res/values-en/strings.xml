@@ -30,5 +30,8 @@
     <!-- CurrencyBottomSheet -->
     <string name="currency_b_sheet_tv">Currency choose</string>
 
+    <!-- Wallets -->
+    <string name="wallet_menu_item_new_wallet">New wallet</string>
+    <string name="toolbar_title_wallet">Wallets</string>
 
 </resources>

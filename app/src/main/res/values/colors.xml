@@ -18,6 +18,7 @@
 
     <color name="grey_5">#9c9eb9</color>
     <color name="grey_10">#66688f</color>
+    <color name="dark_plus">#73738e</color>
     <color name="grey_20">#51526b</color>
     <color name="grey_40">#3f415d</color>
     <color name="grey_50">#313249</color>
@@ -71,6 +72,12 @@
     <!-- CurrencyBottomSheet -->
     <color name="currency_b_sheet_bg">@color/grey_50</color>
     <color name="currency_tv">@color/white</color>
+
+    <!-- Wallets -->
+    <color name="wallet_bg">@color/grey_60</color>
+    <color name="wallet_add">@color/dark_plus</color>
+
+
 
 
 

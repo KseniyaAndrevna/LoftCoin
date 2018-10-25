@@ -2,6 +2,8 @@ package com.kseniyaa.loftcoin.data.db.room;
 
 import com.kseniyaa.loftcoin.data.db.Database;
 import com.kseniyaa.loftcoin.data.db.model.CoinEntyti;
+import com.kseniyaa.loftcoin.data.db.model.Wallet;
+import com.kseniyaa.loftcoin.data.db.model.WalletModel;
 
 import java.util.List;
 
@@ -26,7 +28,17 @@ public class DatabaseImplRoom implements Database {
     }
 
     @Override
+    public Flowable<List<WalletModel>> getWallets() {
+        return database.walletDao().getWallets();
+    }
+
+    @Override
     public CoinEntyti getCoin(String symbol) {
         return database.coinDao().getCoin(symbol);
+    }
+
+    @Override
+    public void saveWallet(Wallet wallet) {
+        database.walletDao().saveWallet(wallet);
     }
 }
