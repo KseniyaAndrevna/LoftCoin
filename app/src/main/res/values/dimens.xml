@@ -79,16 +79,35 @@
 
     <!-- Wallets -->
     <dimen name="item_wallet_width">240dp</dimen>
-    <dimen name="item_wallet_margin">20dp</dimen>
+    <dimen name="item_wallet_height">160dp</dimen>
+    <dimen name="item_between_wallet_margin">20dp</dimen>
+    <dimen name="item_wallet_margin">26dp</dimen>
+    <dimen name="item_wallet_radius">12dp</dimen>
+    <dimen name="item_wallet_symbol_size">20dp</dimen>
+    <dimen name="item_wallet_currency_text_marginS">10dp</dimen>
+    <dimen name="item_wallet_currency_text_marginT">20dp</dimen>
+    <dimen name="item_wallet_currency_text_size">14sp</dimen>
+    <dimen name="item_wallet_amount_text_margin">16dp</dimen>
+    <dimen name="item_wallet_amount_text_size">12sp</dimen>
+    <dimen name="item_wallet_amount2_text_size">16sp</dimen>
+    <dimen name="fragment_height">212dp</dimen>
+    <dimen name="fragment_card_width">240dp</dimen>
+    <dimen name="fragment_card_height">160dp</dimen>
+    <dimen name="fragment_card_radius">12dp</dimen>
+    <dimen name="fragment_card_add_icon_size">42dp</dimen>
 
+    <!-- ItemTransaction -->
+    <dimen name="item_transaction_layout_paddingES">23dp</dimen>
+    <dimen name="item_transaction_layout_paddingTB">14dp</dimen>
+    <dimen name="item_transaction_date_text_size">12sp</dimen>
+    <dimen name="item_transaction_crypto_amount_size">16sp</dimen>
+    <dimen name="item_transaction_fiat_amount_marginT">6dp</dimen>
+    <dimen name="item_transaction_fiat_amount_marginS">46dp</dimen>
+    <dimen name="item_transaction_fiat_amount_size">12sp</dimen>
 
     <!-- CurrencyBottomSheet -->
     <dimen name="currency_b_sheet_tv_height">60dp</dimen>
     <dimen name="currency_b_sheet_tv_padding">@dimen/middle_margin</dimen>
     <dimen name="currency_b_sheet_tv_size">@dimen/small_text_size</dimen>
-
-
-
-
 
 </resources>

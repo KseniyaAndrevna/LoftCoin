@@ -2,23 +2,25 @@ package com.kseniyaa.loftcoin.data.db.model;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
 
 @Entity
-public class Wallet {
+public class Transaction {
 
-    @PrimaryKey
-    @NonNull
+    @PrimaryKey(autoGenerate = true)
+    public int transactionId;
+
     public String walletId;
 
     public int currencyId;
 
     public double amount;
 
-    public Wallet(String walletId, int currencyId, double amount) {
+    public long date;
 
+    public Transaction(String walletId, int currencyId, double amount, long date) {
         this.walletId = walletId;
         this.currencyId = currencyId;
         this.amount = amount;
+        this.date = date;
     }
 }

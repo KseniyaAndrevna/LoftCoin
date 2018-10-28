@@ -76,6 +76,14 @@
     <!-- Wallets -->
     <color name="wallet_bg">@color/grey_60</color>
     <color name="wallet_add">@color/dark_plus</color>
+    <color name="wallet_symbol_text">@color/black</color>
+    <color name="wallet_amount_text">@color/white</color>
+    <color name="wallet_fragment_toolbar">@color/color_primary</color>
+
+    <!-- Transactions -->
+    <color name="transaction_date">@color/grey_10</color>
+    <color name="transaction_crypto_amount">@color/white</color>
+
 
 
 

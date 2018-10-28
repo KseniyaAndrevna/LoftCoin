@@ -121,7 +121,7 @@ public class WalletsPagerAdapter extends PagerAdapter {
             Fiat fiat = prefs.getFiatCurrency();
             QuoteEntity quote = model.coin.getQuote(fiat);
 
-            double amount = model.wallet.amount = quote.price;
+            double amount = model.wallet.amount * quote.price;
             String value = currencyFormatter.format(amount, false);
 
             secondaryAmount.setText(itemView.getContext().getString(R.string.currency_amount, value, fiat.symbol));
