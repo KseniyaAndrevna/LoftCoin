@@ -38,7 +38,11 @@
 
     <!-- CurrencyBottomSheet -->
     <string name="currency_b_sheet_tv">Выбор вылюты</string>
-    <string name="currency_b_sheet_curr_name"  translatable="false">%s | %s</string>
+    <string name="currency_b_sheet_curr_name" translatable="false">%s | %s</string>
+
+    <!-- Wallets -->
+    <string name="wallet_menu_item_new_wallet">Новый кошелек</string>
+    <string name="toolbar_title_wallet">Кошельки</string>
 
 
 </resources>

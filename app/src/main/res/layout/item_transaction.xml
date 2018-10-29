@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/item_transaction_layout_paddingES"
+    android:paddingTop="@dimen/item_transaction_layout_paddingTB"
+    android:paddingEnd="@dimen/item_transaction_layout_paddingTB"
+    android:paddingBottom="@dimen/item_transaction_layout_paddingES">
+
+    <TextView
+        android:id="@+id/transaction_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="sans-serif-medium"
+        android:textAllCaps="true"
+        android:textColor="@color/transaction_date"
+        android:textSize="@dimen/item_transaction_date_text_size"
+        tools:text="13 окт 2018" />
+
+    <TextView
+        android:id="@+id/transaction_crypto_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:layout_toStartOf="@+id/transaction_date"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-medium"
+        android:lines="1"
+        android:textColor="@color/transaction_crypto_amount"
+        android:textSize="@dimen/item_transaction_crypto_amount_size"
+        tools:text="2.5432 BTC" />
+
+    <ImageView
+        android:id="@+id/transaction_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/transaction_crypto_amount"
+        android:layout_alignBottom="@+id/transaction_crypto_amount"
+        android:src="@drawable/ic_transaction_expense" />
+
+    <TextView
+        android:id="@+id/transaction_fiat_amount"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/transaction_crypto_amount"
+        android:layout_marginStart="@dimen/item_transaction_fiat_amount_marginS"
+        android:layout_marginTop="@dimen/item_transaction_fiat_amount_marginT"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="@dimen/item_transaction_fiat_amount_size"
+        tools:text="- 15 225,12 $" />
+
+</RelativeLayout>

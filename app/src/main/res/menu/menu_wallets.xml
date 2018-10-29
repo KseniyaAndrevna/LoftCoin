@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_item_currency"
-        android:icon="@drawable/ic_menu_currency"
-        android:title="@string/currency_item_menu"
+        android:id="@+id/menu_item_add_wallet"
+        android:icon="@drawable/ic_menu_wallet_add"
+        android:title="@string/wallet_menu_item_new_wallet"
         app:showAsAction="always" />
 
 </menu>

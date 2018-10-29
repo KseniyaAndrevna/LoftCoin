@@ -4,9 +4,13 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 
 import com.kseniyaa.loftcoin.data.db.model.CoinEntyti;
+import com.kseniyaa.loftcoin.data.db.model.Transaction;
+import com.kseniyaa.loftcoin.data.db.model.Wallet;
 
-@Database(entities = {CoinEntyti.class},version = 1)
+@Database(entities = {CoinEntyti.class, Wallet.class, Transaction.class},version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
-    abstract CoinDao coinDao();
+    public abstract CoinDao coinDao();
+    public abstract WalletDao walletDao();
+
 }
