@@ -9,9 +9,7 @@ import com.kseniyaa.loftcoin.App;
 import com.kseniyaa.loftcoin.data.db.Database;
 import com.kseniyaa.loftcoin.data.db.model.CoinEntyti;
 import com.kseniyaa.loftcoin.data.db.model.Transaction;
-import com.kseniyaa.loftcoin.data.db.model.TransactionModel;
 import com.kseniyaa.loftcoin.data.db.model.Wallet;
-import com.kseniyaa.loftcoin.data.db.model.WalletModel;
 import com.kseniyaa.loftcoin.utils.SingleLiveEvent;
 
 import java.util.ArrayList;
@@ -30,8 +28,8 @@ public class WalletsViewModelImpl extends WalletsViewModel {
     private SingleLiveEvent<Object> selectCurrency = new SingleLiveEvent<>();
     private MutableLiveData<Boolean> walletsVisible = new MutableLiveData<>();
     private MutableLiveData<Boolean> newWalletVisible = new MutableLiveData<>();
-    private MutableLiveData<List<WalletModel>> walletsItems = new MutableLiveData<>();
-    private MutableLiveData<List<TransactionModel>> transactionsItems = new MutableLiveData<>();
+    private MutableLiveData<List<Wallet>> walletsItems = new MutableLiveData<>();
+    private MutableLiveData<List<Transaction>> transactionsItems = new MutableLiveData<>();
 
     private CompositeDisposable disposables = new CompositeDisposable();
 
@@ -54,12 +52,12 @@ public class WalletsViewModelImpl extends WalletsViewModel {
     }
 
     @Override
-    public LiveData<List<WalletModel>> wallets() {
+    public LiveData<List<Wallet>> wallets() {
         return walletsItems;
     }
 
     @Override
-    public LiveData<List<TransactionModel>> transactions() {
+    public LiveData<List<Transaction>> transactions() {
         return transactionsItems;
     }
 
@@ -98,7 +96,7 @@ public class WalletsViewModelImpl extends WalletsViewModel {
 
     @Override
     public void onWalletChange(int position) {
-        Wallet wallet = walletsItems.getValue().get(position).wallet;
+        Wallet wallet = walletsItems.getValue().get(position);
         getTransaction(wallet.walletId);
     }
 
@@ -115,8 +113,8 @@ public class WalletsViewModelImpl extends WalletsViewModel {
                                 newWalletVisible.setValue(false);
 
                                 if (walletsItems.getValue() == null || walletsItems.getValue().isEmpty()) {
-                                    WalletModel model = wallets.get(0);
-                                    String walletId = model.wallet.walletId;
+                                    Wallet wallet = wallets.get(0);
+                                    String walletId = wallet.walletId;
                                     getTransaction(walletId);
                                 }
 
@@ -136,7 +134,7 @@ public class WalletsViewModelImpl extends WalletsViewModel {
 
     private Wallet randomWallet(CoinEntyti coin) {
         Random random = new Random();
-        return new Wallet(UUID.randomUUID().toString(), coin.id, 100 + random.nextDouble());
+        return new Wallet(UUID.randomUUID().toString(),  10 + random.nextDouble(),coin);
     }
 
     private List<Transaction> randomTransactions(Wallet wallet) {
@@ -159,6 +157,6 @@ public class WalletsViewModelImpl extends WalletsViewModel {
         double amount = 2 * random.nextDouble();
         boolean amountSign = random.nextBoolean();
 
-        return new Transaction(wallet.walletId, wallet.currencyId, amountSign ? amount : -amount, date);
+        return new Transaction(wallet.walletId, amountSign ? amount : -amount, date, wallet.coin);
     }
 }

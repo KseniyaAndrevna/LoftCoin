@@ -1,6 +1,8 @@
 package com.kseniyaa.loftcoin.data.db.model;
 
-public class QuoteEntity  {
+import io.realm.RealmObject;
+
+public class QuoteEntity extends RealmObject {
 
     public double price;
 

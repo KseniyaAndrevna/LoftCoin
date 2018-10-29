@@ -56,7 +56,9 @@ public class StartPresenterImpl implements StartPresenter {
                 .map(rateResponse -> {
                     List<Coin> coins = rateResponse.data;
                     List<CoinEntyti> coinEntities = mapper.mapCoins(coins);
+                    database.open();
                     database.saveCoins(coinEntities);
+                    database.close();
 
                     return coinEntities;
                 })
