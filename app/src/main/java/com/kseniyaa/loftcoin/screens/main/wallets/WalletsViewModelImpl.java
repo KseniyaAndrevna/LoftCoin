@@ -16,16 +16,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 public class WalletsViewModelImpl extends WalletsViewModel {
 
     private SingleLiveEvent<Object> selectCurrency = new SingleLiveEvent<>();
+    private SingleLiveEvent<Object> scrollOnNewWallet = new SingleLiveEvent<>();
     private MutableLiveData<Boolean> walletsVisible = new MutableLiveData<>();
     private MutableLiveData<Boolean> newWalletVisible = new MutableLiveData<>();
     private MutableLiveData<List<Wallet>> walletsItems = new MutableLiveData<>();
@@ -39,16 +39,28 @@ public class WalletsViewModelImpl extends WalletsViewModel {
         super(application);
 
         database = ((App) getApplication()).getDatabase();
+        database.open();
+    }
+
+    @Override
+    protected void onCleared() {
+        database.close();
+        super.onCleared();
     }
 
     @Override
     public void onNewWalletClick() {
-        selectCurrency.postValue(new Object());
+        selectCurrency.setValue(new Object());
     }
 
     @Override
     public LiveData<Object> selectCurrency() {
         return selectCurrency;
+    }
+
+    @Override
+    public LiveData<Object> scrollToNewWallet() {
+        return scrollOnNewWallet;
     }
 
     @Override
@@ -82,8 +94,8 @@ public class WalletsViewModelImpl extends WalletsViewModel {
                     return new Object();
                 }
         )
-                .subscribeOn(Schedulers.io())
-                .subscribe();
+                .debounce(500, TimeUnit.MICROSECONDS)
+                .subscribe(o -> scrollOnNewWallet.call());
 
         disposables.add(disposable);
     }
@@ -102,7 +114,6 @@ public class WalletsViewModelImpl extends WalletsViewModel {
 
     private void getWalletsInner() {
         Disposable disposable = database.getWallets()
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         wallets -> {
                             if (wallets.isEmpty()) {
@@ -117,16 +128,14 @@ public class WalletsViewModelImpl extends WalletsViewModel {
                                     String walletId = wallet.walletId;
                                     getTransaction(walletId);
                                 }
-
-                                walletsItems.setValue(wallets);
                             }
+                            walletsItems.setValue(wallets);
                         });
         disposables.add(disposable);
     }
 
     private void getTransaction(String walletId) {
         Disposable disposable = database.getTransactions(walletId)
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(transactions -> transactionsItems.setValue(transactions));
 
         disposables.add(disposable);
@@ -134,7 +143,7 @@ public class WalletsViewModelImpl extends WalletsViewModel {
 
     private Wallet randomWallet(CoinEntyti coin) {
         Random random = new Random();
-        return new Wallet(UUID.randomUUID().toString(),  10 + random.nextDouble(),coin);
+        return new Wallet(UUID.randomUUID().toString(), 10 + random.nextDouble(), coin);
     }
 
     private List<Transaction> randomTransactions(Wallet wallet) {

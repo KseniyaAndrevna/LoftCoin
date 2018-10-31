@@ -73,10 +73,7 @@ public class StartPresenterImpl implements StartPresenter {
 
                         }
                 );
-
-
         disposables.add(disposable);
-
     }
 }
 

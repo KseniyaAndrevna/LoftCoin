@@ -21,9 +21,11 @@ import com.kseniyaa.loftcoin.R;
 import com.kseniyaa.loftcoin.data.api.Api;
 import com.kseniyaa.loftcoin.data.db.Database;
 import com.kseniyaa.loftcoin.data.db.model.CoinEntityMapper;
+import com.kseniyaa.loftcoin.data.db.model.CoinEntyti;
 import com.kseniyaa.loftcoin.data.model.Fiat;
 import com.kseniyaa.loftcoin.data.prefs.Prefs;
 
+import java.util.List;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -127,7 +129,7 @@ public class RateFragment extends Fragment implements RateView, Toolbar.OnMenuIt
     }
 
     @Override
-    public void setCoins(Object coins) {
+    public void setCoins(List<CoinEntyti> coins) {
         adapter.setCoins(coins);
 
         if (layoutManagerState != null) {

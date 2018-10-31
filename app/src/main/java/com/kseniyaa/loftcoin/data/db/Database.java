@@ -16,7 +16,7 @@ public interface Database {
 
     void saveTransaction(List<Transaction> transactions);
 
-    Flowable getCoins();
+    Flowable<List<CoinEntyti>> getCoins();
 
     Flowable<List<Wallet>> getWallets();
 

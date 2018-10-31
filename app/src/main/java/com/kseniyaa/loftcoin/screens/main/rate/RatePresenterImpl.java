@@ -54,12 +54,11 @@ public class RatePresenterImpl implements RatePresenter {
 
     @Override
     public void getRate() {
-
         Disposable disposable = mainDatabase.getCoins()
                 .subscribe(
-                        coinEntities -> {
+                        coinEntyti -> {
                             if (view != null) {
-                                view.setCoins(coinEntities);
+                                view.setCoins(coinEntyti);
                             }
                         },
                         throwable -> {

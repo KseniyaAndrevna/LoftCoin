@@ -92,7 +92,7 @@ public class WalletsFragment extends Fragment implements CurrenciesBottomSheetLi
         walletsPager.setPageMargin(-pageMargin);
         walletsPager.setOffscreenPageLimit(5);
         walletsPager.setAdapter(walletsPagerAdapter);
-        walletsPager.setPageTransformer(false,new ZoomOutPageTransformer());
+        walletsPager.setPageTransformer(false, new ZoomOutPageTransformer());
 
         Fragment bottomSheetSource = getFragmentManager().findFragmentByTag(CurrenciesBottomSheet.TAG);
         if (bottomSheetSource != null) {
@@ -141,6 +141,7 @@ public class WalletsFragment extends Fragment implements CurrenciesBottomSheetLi
         viewModel.newWalletVisible().observe(this, visible -> newWallet.setVisibility(visible ? View.VISIBLE : View.GONE));
         viewModel.selectCurrency().observe(this, o -> showCurrenciesBottomSheet());
         viewModel.transactions().observe(this, transactionModels -> transactionAdapter.setTransactions(transactionModels));
+        viewModel.scrollToNewWallet().observe(this, o -> walletsPager.setCurrentItem(walletsPagerAdapter.getCount() - 1, true));
 
     }
 
