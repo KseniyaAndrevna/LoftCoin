@@ -22,7 +22,8 @@ public class RatePresenterImpl implements RatePresenter {
 
     private Api api;
     private Prefs prefs;
-    private Database database;
+    private Database mainDatabase;
+    private Database workerDatabase;
     private CoinEntityMapper mapper;
     private CompositeDisposable disposables = new CompositeDisposable();
 
@@ -30,33 +31,34 @@ public class RatePresenterImpl implements RatePresenter {
     @Nullable
     private RateView view;
 
-    RatePresenterImpl(Api api, Prefs prefs, Database database, CoinEntityMapper mapper) {
+    RatePresenterImpl(Api api, Prefs prefs, Database mainDatabase, Database workerDatabase, CoinEntityMapper mapper) {
         this.api = api;
         this.prefs = prefs;
-        this.database = database;
+        this.mainDatabase = mainDatabase;
+        this.workerDatabase = workerDatabase;
         this.mapper = mapper;
     }
 
     @Override
     public void attachView(RateView view) {
         this.view = view;
+        mainDatabase.open();
     }
 
     @Override
     public void detachView() {
+        mainDatabase.close();
         disposables.dispose();
         this.view = null;
     }
 
     @Override
     public void getRate() {
-
-        Disposable disposable = database.getCoins()
-                .observeOn(AndroidSchedulers.mainThread())
+        Disposable disposable = mainDatabase.getCoins()
                 .subscribe(
-                        coinEntities -> {
+                        coinEntyti -> {
                             if (view != null) {
-                                view.setCoins(coinEntities);
+                                view.setCoins(coinEntyti);
                             }
                         },
                         throwable -> {
@@ -78,7 +80,9 @@ public class RatePresenterImpl implements RatePresenter {
                 .map(rateResponse -> {
                     List<Coin> coins = rateResponse.data;
                     List<CoinEntyti> coinEntities = mapper.mapCoins(coins);
-                    database.saveCoins(coinEntities);
+                    workerDatabase.open();
+                    workerDatabase.saveCoins(coinEntities);
+                    workerDatabase.close();
 
                     return new Object();
                 })
