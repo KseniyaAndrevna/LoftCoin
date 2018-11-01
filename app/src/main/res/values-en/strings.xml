@@ -34,4 +34,8 @@
     <string name="wallet_menu_item_new_wallet">New wallet</string>
     <string name="toolbar_title_wallet">Wallets</string>
 
+    <!-- Notification -->
+    <string name="notification_rate_change_body">Rate changed %s</string>
+    <string name="notification_rate_changed">Rate changes</string>
+
 </resources>

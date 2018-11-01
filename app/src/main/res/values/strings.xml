@@ -44,5 +44,11 @@
     <string name="wallet_menu_item_new_wallet">Новый кошелек</string>
     <string name="toolbar_title_wallet">Кошельки</string>
 
+    <!-- Notification -->
+    <string name="notification_rate_change_body">Курс изменился %s</string>
+    <string name="notification_rate_changed">Изменение курса</string>
+
+
+
 
 </resources>
