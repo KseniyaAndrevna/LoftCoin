@@ -161,8 +161,10 @@ public class WalletsFragment extends Fragment implements CurrenciesBottomSheetLi
 
     private void showCurrenciesBottomSheet() {
         CurrenciesBottomSheet bottomSheet = new CurrenciesBottomSheet();
-        bottomSheet.show(getFragmentManager(), CurrenciesBottomSheet.TAG);
-        bottomSheet.setListener(this);
+        if (!bottomSheet.isHidden()) {
+            bottomSheet.show(getFragmentManager(), CurrenciesBottomSheet.TAG);
+            bottomSheet.setListener(this);
+        }
     }
 
 

@@ -22,6 +22,8 @@
 
     <!--ConverterFragment-->
     <string name="converter_fragment_title">Converter</string>
+    <string name="converter_fragment_hint">Сurrency</string>
+    <string name="converter_fragment_hint_result">Result</string>
 
     <!-- CurrencyDialog -->
     <string name="currency_item_menu">Currency</string>
@@ -33,5 +35,9 @@
     <!-- Wallets -->
     <string name="wallet_menu_item_new_wallet">New wallet</string>
     <string name="toolbar_title_wallet">Wallets</string>
+
+    <!-- Notification -->
+    <string name="notification_rate_change_body">Rate changed %s</string>
+    <string name="notification_rate_changed">Rate changes</string>
 
 </resources>

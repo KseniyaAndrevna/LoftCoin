@@ -21,10 +21,13 @@
     <!--RateFragment-->
     <string name="rate_fragment_title">Курс криптовалют</string>
     <string name="rate_item_percent_change" translatable="false">%.2f%%</string>
+    <string name="rate_item_positive_percent_change" translatable="false">+%.2f%%</string>
     <string name="currency_amount" translatable="false">%s %s</string>
 
     <!--ConverterFragment-->
     <string name="converter_fragment_title">Конвертер</string>
+    <string name="converter_fragment_hint">Значение</string>
+    <string name="converter_fragment_hint_result">Результат</string>
 
     <!-- CurrencyDialog -->
     <string name="currency_item_menu">Валюта</string>
@@ -43,6 +46,12 @@
     <!-- Wallets -->
     <string name="wallet_menu_item_new_wallet">Новый кошелек</string>
     <string name="toolbar_title_wallet">Кошельки</string>
+
+    <!-- Notification -->
+    <string name="notification_rate_change_body">Курс изменился %s</string>
+    <string name="notification_rate_changed">Изменение курса</string>
+
+
 
 
 </resources>

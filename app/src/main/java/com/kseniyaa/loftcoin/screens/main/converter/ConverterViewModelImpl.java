@@ -104,11 +104,13 @@ public class ConverterViewModelImpl implements ConverterViewModel {
             return;
         }
 
-        double sourceValue = Double.parseDouble(sourceAmountValue);
-        double destinationValue = sourceValue * sourceCoin.usd.price / destinationCoin.usd.price;
-        String destinationAmountValue = String.valueOf(currencyFormatter.formatForConverter(destinationValue));
-        destinationAmount.onNext(destinationAmountValue);
+        if (!sourceAmountValue.equals(".") & sourceAmountValue.length() != 1) {
 
+            double sourceValue = Double.parseDouble(sourceAmountValue);
+            double destinationValue = sourceValue * sourceCoin.usd.price / destinationCoin.usd.price;
+            String destinationAmountValue = String.valueOf(currencyFormatter.formatForConverter(destinationValue));
+            destinationAmount.onNext(destinationAmountValue);
+        }
     }
 
     @Override
@@ -139,7 +141,7 @@ public class ConverterViewModelImpl implements ConverterViewModel {
 
     @Override
     public void saveState(Bundle outState) {
-        outState.putString(KEY_SOURCE_CURRENCY,sourceCurrencySymbol);
+        outState.putString(KEY_SOURCE_CURRENCY, sourceCurrencySymbol);
         outState.putString(KEY_DESTINATION_CURRENCY, destinationCurrencySymbol);
     }
 

@@ -9,6 +9,7 @@ import com.kseniyaa.loftcoin.data.db.model.CoinEntityMapper;
 import com.kseniyaa.loftcoin.data.db.model.CoinEntyti;
 import com.kseniyaa.loftcoin.data.model.Fiat;
 import com.kseniyaa.loftcoin.data.prefs.Prefs;
+import com.kseniyaa.loftcoin.job.JobHelper;
 
 import java.util.List;
 
@@ -26,17 +27,19 @@ public class RatePresenterImpl implements RatePresenter {
     private Database workerDatabase;
     private CoinEntityMapper mapper;
     private CompositeDisposable disposables = new CompositeDisposable();
+    private JobHelper jobHelper;
 
 
     @Nullable
     private RateView view;
 
-    RatePresenterImpl(Api api, Prefs prefs, Database mainDatabase, Database workerDatabase, CoinEntityMapper mapper) {
+    RatePresenterImpl(Api api, Prefs prefs, Database mainDatabase, Database workerDatabase, CoinEntityMapper mapper, JobHelper jobHelper) {
         this.api = api;
         this.prefs = prefs;
         this.mainDatabase = mainDatabase;
         this.workerDatabase = workerDatabase;
         this.mapper = mapper;
+        this.jobHelper = jobHelper;
     }
 
     @Override
@@ -122,5 +125,10 @@ public class RatePresenterImpl implements RatePresenter {
     public void onFiatCurrencySelected(Fiat currency) {
         prefs.setFiatCurrency(currency);
         loadRate(false);
+    }
+
+    @Override
+    public void onRateLongClick(String symbol) {
+        jobHelper.startSyncRateJob(symbol);
     }
 }
