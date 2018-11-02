@@ -172,11 +172,15 @@ public class ConverterFragment extends Fragment {
         CurrenciesBottomSheet bottomSheet = new CurrenciesBottomSheet();
 
         if (source) {
-            bottomSheet.show(getFragmentManager(), SOURCE_CURRENCY_BOTTOM_SHEET_TAG);
-            bottomSheet.setListener(sourceListener);
+            if (!bottomSheet.isHidden()) {
+                bottomSheet.show(getFragmentManager(), SOURCE_CURRENCY_BOTTOM_SHEET_TAG);
+                bottomSheet.setListener(sourceListener);
+            }
         } else {
-            bottomSheet.show(getFragmentManager(), DESTINATION_CURRENCY_BOTTOM_SHEET_TAG);
-            bottomSheet.setListener(destinationListener);
+            if (!bottomSheet.isHidden()) {
+                bottomSheet.show(getFragmentManager(), DESTINATION_CURRENCY_BOTTOM_SHEET_TAG);
+                bottomSheet.setListener(destinationListener);
+            }
         }
     }
 

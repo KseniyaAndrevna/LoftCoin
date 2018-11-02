@@ -22,6 +22,8 @@
 
     <!--ConverterFragment-->
     <string name="converter_fragment_title">Converter</string>
+    <string name="converter_fragment_hint">Сurrency</string>
+    <string name="converter_fragment_hint_result">Result</string>
 
     <!-- CurrencyDialog -->
     <string name="currency_item_menu">Currency</string>

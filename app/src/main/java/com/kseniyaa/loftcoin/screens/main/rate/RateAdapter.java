@@ -159,10 +159,12 @@ public class RateAdapter extends RecyclerView.Adapter<RateAdapter.RateViewHolder
             QuoteEntity quote = coin.getQuote(prefs.getFiatCurrency());
             float percentChangeValue = quote.percentChange24h;
 
-            changePercent.setText(context.getString(R.string.rate_item_percent_change, percentChangeValue));
+            //changePercent.setText(context.getString(R.string.rate_item_percent_change, percentChangeValue));
             if (percentChangeValue >= 0) {
+                changePercent.setText(context.getString(R.string.rate_item_positive_percent_change, percentChangeValue));
                 changePercent.setTextColor(context.getResources().getColor(R.color.percent_up));
             } else {
+                changePercent.setText(context.getString(R.string.rate_item_percent_change, percentChangeValue));
                 changePercent.setTextColor(context.getResources().getColor(R.color.percent_down));
             }
 
